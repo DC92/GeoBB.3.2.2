@@ -1,3 +1,4 @@
+/*
 control.geocoder.addTo(map);
 control.fileload.addTo(map);
 control.fileget.addTo(map);
@@ -14,3 +15,4 @@ var cadre = new L.Marker([0,0], {
 
 if (cadre._latlng)
 	cadre.addTo(map);
+*/

@@ -61,7 +61,7 @@ var overLayers = {
 		abri: '["amenity"="shelter"]',
 		hotel: '["tourism"~"hotel|guest_house|chalet|hostel|apartment"]',
 	})
-}
+};
 
 var controls = [
 	controlLayers(baseLayers, overLayers),

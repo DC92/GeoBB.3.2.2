@@ -148,6 +148,9 @@ body, html,
 .username-coloured {
     text-transform: capitalize;
 }
+#nouvelles .row:after {
+	clear: none;
+}
 
 /* Carte */
 #map {

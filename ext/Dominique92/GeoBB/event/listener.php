@@ -69,38 +69,10 @@ class listener implements EventSubscriberInterface
 		];
 	}
 
-/* INTEGRER : TODO DCMM
-BarMenu
-	'core.page_footer' => 'page_footer',
-News
-	'core.display_forums_modify_row' => 'display_forums_modify_row',
-	'core.index_modify_page_title' => 'index_modify_page_title',
-ResizeImg
-	'core.viewtopic_post_rowset_data' => 'viewtopic_post_rowset_data',
-	'core.viewtopic_modify_post_data' => 'viewtopic_modify_post_data',
-	'core.parse_attachments_modify_template_data' => 'parse_attachments_modify_template_data',
-	'core.download_file_send_to_browser_before' => 'download_file_send_to_browser_before',
-Reference
-	'core.index_modify_page_title' => 'init_select',
-	'core.viewtopic_modify_post_data' => 'viewtopic_modify_post_data',
-	'core.viewtopic_assign_template_vars_before' => 'viewtopic_assign_template_vars_before',
-	'core.modify_posting_auth' => 'modify_posting_auth',
-	'core.submit_post_modify_sql_data' => 'submit_post_modify_sql_data',
-	'geo.gis_after' => 'gis_after',
-	'geo.gis_modify_sql' => 'gis_modify_sql',
-	'geo.gis_modify_data' => 'gis_modify_data',
-Organiser
-			'core.viewtopic_before_f_read_check' => 'viewtopic_before_f_read_check',
-			'core.viewtopic_post_rowset_data' => 'viewtopic_post_rowset_data',
-			'core.viewtopic_modify_post_data' => 'viewtopic_modify_post_data',
-			'core.viewtopic_modify_post_row' => 'viewtopic_modify_post_row',
-			'core.modify_posting_auth' => 'modify_posting_auth',
-*/
-
-	function geobb_activate_map($vars, $forum_desc = '[all=accueil]', $first_post = true) {
+	function geobb_activate_map($vars, $forum_desc, $first_post = true) {
 		global $config_locale;
 
-		preg_match ('/\[(first|all)=([a-z]+)\]/i', html_entity_decode ($forum_desc), $regle);
+		preg_match ('/\[(first|all)=([a-z]+)\]/i', html_entity_decode ($forum_desc.'[all=accueil]'), $regle);
 		switch (@$regle[1]) {
 			case 'first': // Régle sur le premier post seulement
 				if (!$first_post)
@@ -108,7 +80,7 @@ Organiser
 
 			case 'all': // Régle sur tous les posts
 				$this->template->assign_vars([
-//DCMM ?? utile ? DELETE					'EXT_DIR' => $this->ext_dir, //TODO DCMM: mettre un nom correspondant à cette extension !!
+					'EXT_DIR' => $this->ext_dir,
 					'GEO_MAP_TYPE' => $regle[2],
 					'MAP_KEYS' => @$config_locale['keys-js']
 				]);
