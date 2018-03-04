@@ -1,0 +1,19 @@
+<dl class="posting-point" style="clear: left;">
+	<dt><label><span id="edit-title-lat"></span>{L_COLON}</label></dt>
+	<dd><input type="text" id="edit-proj-lat" size="10" class="inputbox autowidth" /></dd>
+	<dt><label><span id="edit-title-lng"></span>{L_COLON}</label></dt>
+	<dd>
+		<input type="text" id="edit-proj-lng" size="10" class="inputbox autowidth" />
+		<select id="edit-select"><option value="decimal"></option></select>
+	</dd>
+	<dd><a style="cursor:pointer" onclick="map.panTo(curseur._latlng)">Recentrer la carte sur le curseur</a></dd>
+	<dd><a style="cursor:pointer" onclick="curseur.setLatLng(map.getCenter())">Remettre le curseur au centre actuel de la carte</a></dd>
+	<dd><a style="cursor:pointer" onclick="gotogps()">Utiliser la position du GPS</a></dd>
+
+	<br />
+	<dt><label>Altitude{L_COLON}</label></dt>
+	<dd><input type="text" name="geo_altitude" size="10" class="inputbox autowidth" value="{GEO_ALTITUDE}" />*</dd>
+	<dt><label>Massif{L_COLON}</label></dt>
+	<dd><input type="text" name="geo_massif" size="25" class="inputbox autowidth" value="{GEO_MASSIF}" />*</dd>
+	<dd>* Laisser le champ vide pour que le serveur le détermine automatiquement.</dd>
+</dl>

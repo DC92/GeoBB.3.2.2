@@ -1,0 +1,11 @@
+services:
+    Dominique92.StylesViews.listener:
+        class: Dominique92\StylesViews\event\listener
+        arguments:
+            - @dbal.conn
+            - @request
+            - @template
+            - @user
+            - %core.root_path%
+        tags:
+            - { name: event.listener }

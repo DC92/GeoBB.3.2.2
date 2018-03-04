@@ -1,0 +1,43 @@
+<!-- IF GEO_PRESENTATION && not S_USER_LOGGED_IN -->
+	<ul class="panel faq"><dl><p>{GEO_PRESENTATION}</p></dl></ul>
+<!-- ENDIF -->
+
+<ul id="nouvelles" class=" topiclist">
+	<li class="header">
+		<dl><dt>{L_FEED_NEWS}{L_COLON}</dt></dl>
+	</li>
+
+	<!-- BEGIN nouvelles -->
+		<li class="row bg1 ">
+			<dl><dt class="rowbg">
+				<!-- IF nouvelles.POST_ID == nouvelles.TOPIC_FIRST_POST_ID -->{L_CREATION}<!-- ELSE -->{L_COMMENT}<!-- ENDIF -->
+				<!-- IF nouvelles.FORUM_IMAGE -->
+					<a href="viewforum.php?f={nouvelles.FORUM_ID}" title="{nouvelles.FORUM_NAME}"><img src="{nouvelles.FORUM_IMAGE}" /></a>
+				<!-- ENDIF -->
+				<a class="topictitle" href="viewtopic.php?t={nouvelles.TOPIC_ID}#p{nouvelles.POST_ID}" title="{L_VIEW_LATEST_POST}">{nouvelles.TOPIC_TITLE}</a>
+				<!-- IF nouvelles.GEO_MASSIF -->
+					({nouvelles.GEO_MASSIF})
+				<!-- ENDIF -->
+				<!-- IF not nouvelles.FORUM_IMAGE -->
+					dans <a class="topictitle" href="viewforum.php?f={nouvelles.FORUM_ID}" title="{L_FORUM_INDEX}">{nouvelles.FORUM_NAME}</a>
+				<!-- ENDIF -->
+				<span>
+					{L_POST_BY_AUTHOR}
+					<a class="username-coloured"
+						href="memberlist.php?mode=viewprofile&amp;u={nouvelles.POSTER_ID}"
+						title="{L_VIEWING_MEMBER_PROFILE}">
+						{nouvelles.USERNAME}
+					</a>
+					{L_POSTED_ON_DATE} {nouvelles.POST_TIME}
+				</span>
+			</dt></dl>
+		</li>
+	<!-- BEGINELSE -->
+		<li class="panel">{L_NO_TOPICS_TIME_FRAME}</li>
+	<!-- END nouvelles -->
+</ul>
+<!-- IF .nouvelles -->
+	<div id="more-news" class="action-bar" style="margin: 0 0 15px 15px">
+			<a href="?nouvelles={PLUS_NOUVELLES}">Plus de nouvelles...</a> 
+	</div>
+<!-- ENDIF -->

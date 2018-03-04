@@ -1,0 +1,46 @@
+<table id="etiquette">
+	<tr><td class="hg"></td><td class="hm"></td><td class="hd"></td></tr>
+
+	<tr><td class="mg"></td><td class="mm">
+		<h1>
+			{TOPIC_TITLE}
+			<!-- IF FORUM_IMAGE -->
+				<img src="{FORUM_IMAGE}" title="{FORUM_NAME}"/>
+			<!-- ENDIF -->
+			<span>(<a href="viewforum.php?f={FORUM_ID}" title="Voir les autres {FORUM_NAME}s">{FORUM_NAME}</a>)</span>
+		</h1>
+		<!-- IF GEO_LAT and GEO_LNG -->
+		<!-- ENDIF -->
+			<h3>
+				<span id="position-title-lng"></span>: <em id="position-proj-lng"></em>
+				<span id="position-title-lat"></span>: <em id="position-proj-lat"></em>
+				<select id="position-select"></select>
+				<span id="position-json" style="display:none">{GEOMJSON}{postrow.GEOMJSON}</span>
+			</h3>
+		<!-- IF GEO_ALTITUDE -->
+			<h3>Altitude: {GEO_ALTITUDE} m</h3>
+		<!-- ENDIF -->
+		<!-- IF GEO_MASSIF -->
+			<h3>Massif: {GEO_MASSIF}</h3>
+		<!-- ENDIF -->
+	</td><td class="md"></td></tr>
+
+	<tr><td class="bg"></td><td class="bm"></td><td class="bd"></td></tr>
+
+	<!-- IF .quickmod --><!-- Teste si moderateur -->
+		<tr><td colspan="2">
+			<ul class="post-buttons" style="float:right">
+				<li>
+					<a href="posting.php?mode=edit&f={FORUM_ID}&p={TOPIC_FIRST_POST_ID}" title="Modifier l'entête" class="button icon-button edit-icon"><span>{L_BUTTON_EDIT}</span></a>
+				</li>
+				<li>
+					<a href="mcp.php?t={TOPIC_ID}&quickmod=1&action=delete_topic" title="Supprimer la fiche et les commentaires" class="button icon-button delete-icon"><span>{L_BUTTON_DELETE}</span></a>
+				</li>
+			</ul>
+		</td></tr>
+	<!-- ENDIF -->
+
+	<tr><td></td><td>
+		<!-- INCLUDE reference.html -->
+	</td></tr>
+</table>

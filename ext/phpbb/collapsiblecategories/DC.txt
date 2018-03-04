@@ -1,0 +1,2 @@
+https://www.phpbb.com/customise/db/extension/collapsible_forum_categories/
+phpbb_collapsiblecategories_1.0.2.zip

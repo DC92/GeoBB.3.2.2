@@ -1,0 +1,11 @@
+services:
+    Dominique92.News.listener:
+        class: Dominique92\News\event\listener
+        arguments:
+            - @dbal.conn
+            - @request
+            - @template
+            - @user
+            - %core.root_path%
+        tags:
+            - { name: event.listener }

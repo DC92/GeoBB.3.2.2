@@ -1,0 +1,96 @@
+<ul id="menu" class="horizontal">
+	<!-- Partie gauche (en partant du bord) -->
+	<li id="accueil" title="Accéder directement aux types de points." onclick="deplie(this)">
+		<a href="{ROOT_PATH}">{L_HOME}</a>&nbsp;
+		<ul>
+			<!-- BEGIN geo_categories -->
+				<li><a href="viewforum.php?f={geo_categories.CATEGORY_ID}">{geo_categories.CATEGORY_NAME}s</a></li>
+			<!-- END geo_categories -->
+		</ul>
+	</li>
+
+	<!-- IF .navlinks -->
+		<li id="ariane" title="Position de cette page depuis l'accueil.">
+			<!-- BEGIN navlinks -->
+				&#187; <a href="{navlinks.U_VIEW_FORUM}">{navlinks.FORUM_NAME}</a>
+			<!-- END navlinks -->
+		</li>
+	<!-- ENDIF -->
+
+	<!-- IF .potviews -->
+		<!-- TODO DCMM Mettre dans ref/StylesWiews -->
+		<li id="potviews">
+			<!-- BEGIN potviews -->
+				<a href="{potviews.URL}" title="Afficher en format {potviews.TITRE}">
+					<img src="{potviews.ICONE}" alt="{potviews.NOM}" />
+				</a>
+			<!-- END potviews -->
+		</li>
+	<!-- ENDIF -->
+
+	<!-- Partie droite (en partant du bord) -->
+	<li id="bouton" class="cache"><a onclick="menu(true)" title="{L_OPEN_CLOSE}">&#9776;</a></li>
+
+	<!-- IF not S_IS_BOT -->
+		<li onclick="deplie(this)">
+			<!-- IF S_USER_LOGGED_IN -->
+				<span>[{S_USERNAME}]</span>
+				<ul>
+					<li><a href="{U_PROFILE}" title="{L_PROFILE}">{L_READ_PROFILE}</a></li>
+					<li><a href="ucp.php?i=ucp_pm" title="{L_PRIVATE_MESSAGES}">{L_MESSAGES}</a></li>
+					<li><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></li>
+					<li><a href="{U_DELETE_COOKIES}" title="{L_DELETE_COOKIES}">{L_DELETE_COOKIES}</a></li>
+				</ul>
+			<!-- ELSE -->
+				<span><a href="{U_LOGIN_LOGOUT}">{L_IDENTIFY}</a></span>
+				<ul>
+					<li><a href="{U_LOGIN_LOGOUT}">{L_LOGIN_LOGOUT}</a></li>
+					<li><a href="{U_REGISTER}" title="Créer un compte">{L_REGISTER}</a></li>
+					<li><a href="{U_DELETE_COOKIES}" title="{L_DELETE_COOKIES}">{L_DELETE_COOKIES}</a></li>
+				</ul>
+			<!-- ENDIF -->
+		</li>
+		<!-- IF PRIVATE_MESSAGE_COUNT -->
+			<li name="menu-message">
+				<a href="ucp.php?i=ucp_pm"
+					title="{PRIVATE_MESSAGE_COUNT} message<!-- IF PRIVATE_MESSAGE_COUNT > 1 -->s<!-- ENDIF --> privé<!-- IF PRIVATE_MESSAGE_COUNT > 1 -->s<!-- ENDIF -->">
+					&#9993;</a>
+			</li>
+		<!-- ENDIF -->
+	<!-- ENDIF -->
+
+	<li onclick="deplie(this)">
+		<span><a href="{ROOT_PATH}viewtopic.php?t=1">Aide</a></span>
+		<ul>
+			<li><a href="{ROOT_PATH}viewtopic.php?t=1">Aide chemineur</a></li>
+			<li><a href="{ROOT_PATH}faq.php">Aide PhpBB</a></li>
+			<li><a href="{ROOT_PATH}faq.php?mode=bbcode">BBcodes</a></li>
+			<li><a href="https://chemineur.fr" title="Accès sécurisé au site chemineur.fr">Chemineur HTTPS</a></li>
+			<li><a href="http://v2.chemineur.fr" target="_BLANK" title="Ancienne version du site, figée pour référence.">Chemineur V2</a></li>
+			<li><a href="http://test.chemineur.fr" title="Site de test et de formation">Tests sur chemineur</a></li>
+			<li><a href="memberlist.php?mode=contactadmin">Nous contacter</a></li>
+		</ul>
+	</li>
+
+	<!-- IF S_DISPLAY_SEARCH -->
+		<li id="bouton-cherche"><a href="{U_SEARCH}">{L_SEARCH}</a></li>
+	<!-- ENDIF -->
+
+	<!-- IF U_ACP -->
+		<li onclick="deplie(this)">
+			<a href="{U_ACP}">Admin</a>
+		</li>
+	<!-- ENDIF -->
+
+	<!-- IF .geo_categories and S_USER_LOGGED_IN -->
+		<li onclick="deplie(this)"><span>Ajouter</span>
+			<ul>
+			<!-- BEGIN geo_categories -->
+				<!-- IF geo_categories.FIRST_FORUM_ID -->
+					<li><a href="posting.php?mode=post&amp;f={geo_categories.FIRST_FORUM_ID}">{geo_categories.CATEGORY_NAME}</a></li>
+				<!-- ENDIF -->
+			<!-- END geo_categories -->
+			</ul>
+		</li>
+	<!-- ENDIF -->
+</ul>

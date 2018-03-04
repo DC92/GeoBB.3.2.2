@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="fr">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>{TOPIC_TITLE}</title>
+	<link type="text/css" rel="stylesheet" href="{T_THEME_PATH}/diapo.css" />
+	<script src="assets/javascript/jquery.min.js"></script>
+	<script src="{T_TEMPLATE_PATH}/../assets/SimpleControlsGallery.js"></script>
+</head>
+
+<body onkeypress="location='?t={TOPIC_ID}&view=forum'">
+	<div id="diaporama"></div>
+
+	<!-- BEGIN postrow -->
+		<div style="display:none">
+			<span><b>{postrow.POST_SUBJECT}</b> {postrow.MESSAGE}</span>
+
+			<!-- BEGIN attachment -->
+					{postrow.attachment.DISPLAY_ATTACHMENT}
+			<!-- END attachment -->
+		</div>
+	<!-- END postrow -->
+
+	<script>
+		<!-- INCLUDE viewtopic_diapo.js -->
+	</script>
+</body>
+</html>

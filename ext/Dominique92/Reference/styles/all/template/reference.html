@@ -1,0 +1,25 @@
+<!-- IF .reference -->
+	<ul class="geo_ref"
+		title="Les points ayant une étiquette avec un fond bleu ne font pas partie de chemineur.
+		<!-- IF IS_MODERATOR -->
+		Pour les lier à cette fiche '{TOPIC_TITLE}', cliquer sur 'Lier à {TOPIC_TITLE}'.
+		Pour créer une nouvelle fiche à ces coordonnées, cliquer sur 'Créer une fiche'.
+		<!-- ENDIF -->
+	">
+			<dl>Liens externes</dl>
+			<!-- BEGIN reference -->
+				<!-- IF reference.URL -->
+					<li>
+						<a href="{reference.URL}" title="Voir sur le site d'origine." target="_blank">{reference.NAME} sur {reference.DOMAIN}</a>
+						<!-- IF IS_MODERATOR -->
+							<a href="posting.php?mode=post&f={FORUM_ID}&t={TOPIC_ID}&url={reference.URL}&sid={SESSION_ID}"
+								title="Supprimer ce lien, l'icône réapparaitra sur la carte."
+								class="button icon-button delete-icon">
+								<span></span>
+							</a>
+						<!-- ENDIF -->
+					</li>
+				<!-- ENDIF -->
+			<!-- END reference -->
+	</ul>
+<!-- ENDIF -->

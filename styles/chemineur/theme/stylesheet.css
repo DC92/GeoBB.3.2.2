@@ -1,0 +1,455 @@
+/*  phpBB3 Style Sheet
+    --------------------------------------------------------------
+	Style name:			chemineur
+	Based on style:		subSilver2
+	Original author:	Dominique Cavailhez © 2014
+    --------------------------------------------------------------
+*/
+@import url("../../prosilver/theme/stylesheet.css");
+
+/* Modification de l'affichage standard */
+.section-index #page-body > p, /* Enlève les commentaires prosilver */
+.section-index #page-body .compact, /* Enlève "Marquer tous les forums comme lus" */
+.section-index .statistics,
+
+.view-point .jumpbox-return,
+.view-point .pagination,
+.postprofile,
+form#viewtopic,
+.report-icon, .info-icon, .warn-icon, /* Viewtopic / post */
+
+#options-panel, #options-panel-tab,
+/*label[for=delete_permanent],*/
+.submit-buttons input[name="preview"],
+.file-inline-bbcode {
+	display: none !important;
+}
+/* Affichage état de l'émetteur d'un post */
+.postbody {
+	width: 100%;
+}
+.online {
+	background-image: none;
+}
+
+#attach-panel {
+	display: inline-block !important;
+}
+
+body, html,
+#page-footer {
+	padding: 0;
+	background-color: white;
+}
+#wrap { /* Ecrase le style de base */
+	border: 0;
+	max-width: 100%;
+	padding: 0 !important;
+	margin: 0;
+}
+
+/* Inhibe l'affichage du descripteur de forum */
+.forums .list-inner {
+	color: transparent;
+}
+.forums .list-inner a {
+	position: relative;
+	top: 10px;
+}
+.forums .list-inner img {
+	position: relative;
+	top: 8px;
+}
+
+.dropdown {
+	z-index: 1000 !important;
+}
+
+/* Bandeau */
+.headerbar {
+	background-image: url("images/banniere.jpg");
+	height: 60px;
+	margin: 0 !important;
+	padding: 0;
+	border-radius: 0;
+}
+.logo,
+#search-box {
+	position: absolute;
+	top: -20px;
+	right: 10px;
+}
+#site-description {
+	float: none;
+	width: auto;
+	padding-top: 5px;
+	text-align: center;
+	color: yellow;
+}
+#site-description h1 {
+	font-size: 3em;
+	display: inline;
+	color: yellow;
+}
+#site-description p {
+	padding-left: 10px;
+	font-size: 1.8em;
+	display: inline;
+}
+
+/* Menu */
+/* Specifique chemineur (La base est dans ext/D./Barmenu) */
+#menu.horizontal {
+	background-color: transparent !important;
+	font-weight: normal !important;
+}
+#menu.horizontal > li {
+	margin-top: -16px !important;
+	color: #000 !important;
+	background-color: #fe0 !important;
+	border: 3px outset #dc0 !important;
+}
+#menu.horizontal > li:hover {
+	height: 19px;
+}
+#menu.horizontal li:hover ul {
+	background-color: #fe0 !important;
+	border: 3px outset #dc0 !important;
+	margin: 8px -3px -3px -4px !important;
+}
+#menu.horizontal a {
+	color: #0000ff !important;
+	text-decoration: none;
+}
+#menu.horizontal a:hover {
+	background-color: orange;
+}
+
+.bouton-new-comment {
+	background-color: #fe0;
+	border: 3px outset #dc0;
+	padding: 5px;
+	margin: 5px;
+}
+.topic-tools,
+#quickmod {
+	float: right !important;
+}
+#jumpbox {
+	margin: 0;
+}
+
+/* Accueil */ 
+.section-index > div {
+	background: url('images/coin_ciel.jpg'); 
+	background-repeat: no-repeat ;
+	background-color: #5072BF !important;
+}
+.username-coloured {
+    text-transform: capitalize;
+}
+
+/* Carte */
+#map {
+	margin: 6px 10px 0 5px;
+}
+@media screen and (max-width: 700px) {
+	#map {
+		margin: 0;
+	}
+}
+.leaflet-right .leaflet-control-layers:first-child {
+	z-index: 10;
+	top: 0;
+	right: 0;
+}
+
+/* Accueil index.php */
+#nouvelles .bg1 {
+	clear: none;
+	background-color: transparent;
+	background-image: none;
+}
+#nouvelles li.row {
+	border: none;
+}
+#nouvelles li.header dt {
+	text-transform: capitalize;
+	color: yellow;
+	text-indent: 5px;
+	font-size: 2em;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-bottom: 5px;
+}
+#nouvelles dt {
+	font-size: 1.6em;
+	font-family: Times New Roman;
+	margin: 0 5px;
+	color: white;
+}
+#nouvelles li {
+	color: white;
+	text-indent: 5px;
+}
+#nouvelles a {
+	font-family: Arial;
+	font-size: 1em;
+	color: yellow;
+}
+#more-news a {
+	color: yellow !important;
+}
+
+/* Points */
+.section-viewtopic.view-point #wrap {
+	background: url('images/pierre.jpg'); 
+}
+
+/* Cadres d'affichage */
+#etiquette {
+	position: relative; top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+	border-spacing: 0;
+}
+@media screen and (max-width: 600px) {
+	#etiquette {
+		width: 100%;
+top: 0;
+	}
+}
+
+#etiquette td {
+	padding: 0;
+}
+#etiquette .hg, #etiquette .hd, #etiquette .bg, #etiquette .bd {
+	height: 36px;
+	min-width: 36px;
+	background: url('cadres/etiquette_bg.png');
+}
+#etiquette .hm, #etiquette .bm {
+	background: url('cadres/etiquette_v.png');
+	text-align: right;
+}
+#etiquette .md {
+	vertical-align: bottom;
+}
+#etiquette .md img {
+	position: relative; right: -27px; bottom: -5px;
+}
+#etiquette .mg, #etiquette .md {
+	background: url('cadres/etiquette_h.png');
+}
+#etiquette .hd {
+	background-position: right top;
+}
+#etiquette .bg {
+	height: 0;
+	background-position: left bottom;
+}
+#etiquette .bd, #etiquette .md, #etiquette .bm {
+	background-position: right bottom;
+}
+#etiquette .mm {
+	background-color: white;
+}
+#etiquette h1 {
+	color: #105289;
+	margin-right: 0;
+	margin-top: 0;
+}
+#etiquette h1 span {
+	color: #105289;
+	font-size: 0.8em;
+}
+#etiquette h3,
+#etiquette .action-bar {
+	text-transform: none;
+	font-size: 1em;
+	padding: 0 2px;
+}
+
+/* Liens externes */
+.geo_ref {
+	margin: 10px auto;
+	background-color: #def;
+	border-radius: 10px;
+	border: 2px solid #468;
+	padding-bottom: 5px;
+}
+
+.geo_ref dl {
+	text-align: center;
+    text-decoration: underline;
+	padding-bottom: 5px;
+}
+
+.geo_ref li {
+    list-style-type: circle;
+	margin-left: 20px;
+	height: 28px;
+}
+
+.geo_ref .button {
+	position: relative;
+	top: 6px;
+}
+
+/* Postits */
+.point-post {
+	width: 100%;
+}
+.point-post td {
+	vertical-align: middle;
+	padding: 5px;
+}
+.point-post table {
+	margin-left: auto; margin-right: auto;
+}
+
+.postit {
+	border-spacing: 0;
+}
+.postit td {
+	padding: 0 !important;
+}
+.postit .hg, .postit .hd, .postit .bg, .postit .bd {
+	height: 2px; min-width: 2px;
+	background: url('cadres/postit_bg.png');
+}
+.postit .bd {
+	height: 32px; min-width: 32px;
+}
+.postit .md {
+	vertical-align: bottom;
+}
+.postit .md img {
+	position: relative; right: -20px; bottom: -5px;
+}
+.postit .hm, .postit .bm {
+	background: url('cadres/postit_v.png');
+	text-align: right;
+	font-family: Arial;
+	font-size: 0.8em;
+}
+.postit .mg, .postit .md {
+	background: url('cadres/postit_h.png');
+}
+.postit .hd {
+	background-position: right top;
+}
+.postit .bg {
+	background-position: left bottom;
+}
+.postit .bd, .postit .md, .postit .bm {
+	background-position: right bottom;
+}
+.postit .mm {
+	background-color: #F3E358;
+}
+.postit .mm p {
+	position: relative; left: 12px; top: 5px;
+	font-family: Arial;
+	font-size: 1em;
+	color: #210;
+	text-indent: 10px;
+	margin-bottom: 0;
+}
+.postit .mm .titre {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+.postit .bm p {
+	font-size: 0.8em;
+	float:right;
+	position: relative; left: 10px;
+}
+
+/* Photos */
+.photo {
+	border-spacing: 0;
+	margin: 5px 0;
+}
+.photo td {
+	padding: 0 !important;
+}
+.photo .hg, .photo .hd, .photo .bg, .photo .bd {
+	height: 10px; min-width: 10px;
+	background: url('cadres/photo_bg.png');
+}
+.photo .bd {
+	height: 14px; min-width: 14px;
+}
+.photo .hm, .photo .bm {
+	background: url('cadres/photo_v.png');
+}
+.photo .bd p {
+	height: 12px;
+	position: relative;
+	top: -12px;
+	left: -10px;
+}
+.photo .md {
+	vertical-align: bottom;
+}
+.photo .md img {
+	position: relative; top: -3px; right: -5px;
+}
+.photo .mm {
+	line-height: 0; /* Sinon, le bord inférieur de la photo à un gap de 2px */
+}
+.photo .mg, .photo .md {
+	background: url('cadres/photo_h.png');
+}
+.photo .hd {
+	background-position: right top;
+}
+.photo .bg {
+	background-position: left bottom;
+}
+.photo .bd, .photo .md, .photo .bm {
+	background-position: right bottom;
+}
+.photo .hm p, .photo .bm p  {
+	font-family: Verdana;
+	color: #a00;
+	font-size: 0.8em;
+}
+.photo .hm p {
+	font-weight: bold;
+	position: relative; left: -5px;
+	margin: 0;
+}
+.photo .bm p {
+	text-align: right;
+	position: relative; top: -2px; right: 10px;
+	margin: 2px;
+}
+.photo-comment {
+	margin: 10px;
+}
+.photo-comment span {
+	background-color: #fff;
+	padding: 3px;
+}
+
+.headerspace {
+	background-color: #ECF3F7;
+	margin: 5px;
+	padding: 5px;
+}
+.headerspace h3 {
+	margin: 5px;
+}
+
+/* Lignes*/
+.hovered {
+	background-color: pink !important;
+}
+
+/* Posting */
+.avertissement {
+	color: red;
+}

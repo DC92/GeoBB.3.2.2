@@ -1,0 +1,128 @@
+/* Menu horizontal et déroulant */
+
+.navbar { /* Masque le précédent */
+	display: none;
+}
+.imageset.site_logo {
+	background-image: none;
+}
+
+/* Style bar menu (generic) */
+#menu {
+	background-color: #ECECEC;
+	min-height: 26px;
+	font-size: 1.2em;
+	font-weight: bold;
+	list-style-type: none;
+}
+#menu.horizontal > li {
+	float: right;
+	position: relative;
+	padding: 5px 2px;
+}
+#menu > li > * {
+	margin: 2px;
+}
+#menu > li:first-child > ul {
+	margin-left: 0 !important;
+}
+#menu #accueil,
+#menu #ariane,
+#menu #potviews { /* Le fil d'ariane est à gauche*/
+	float: left;
+	border: 0;
+}
+#menu.horizontal > li#potviews {
+	background-color: transparent !important;
+	border: 0 !important;
+}
+#bouton-cherche {
+	background-image: none !important;
+}
+@media screen and (min-width: 700px) {
+	#bouton-cherche {
+		display: none !important;
+	}
+}
+#menu #bouton { /* Le bouton reste toujours à droite */
+	cursor: pointer;
+	float: right !important;
+}
+#menu #bouton.cache,
+#menu .colonne {
+	display: none;
+}
+#menu.horizontal li ul {
+	position: absolute; /* Pour éviter que les titres de sous-menu se redimensionnent à la taille de leurs items */
+}
+#menu.horizontal li:hover ul {
+	background-color: #ECECEC;
+    border: 5px solid white;
+	border-top: 0 !important;
+	margin: 6px 0 0 -8px;
+	padding: 5px;
+	z-index: 10000; /* Pour être au dessus des cartes */
+}
+#menu.horizontal a {
+	color: #536482;
+}
+#menu.horizontal li a:hover,
+#menu.horizontal li ul li:hover a {
+	color: red;
+}
+@-moz-document url-prefix() {
+	#menu.horizontal li:hover ul { /* FF ne traite pas les marges pareil !! */
+		margin-top: 4px;
+	}
+}
+#menu li[name="menu-message"] {
+	padding: 0;
+	height: 25px;
+}
+#menu li[name="menu-message"] a {
+	color: red !important;
+	font-size: large;
+}
+#menu small {
+	Wdisplay: none;
+}
+
+/* Masquage et affichage au survol des sous-menu en mode ligne */
+#menu li ul li {
+	display: none;
+}
+#menu li.deplie ul li {
+	display: block;
+}
+#menu.horizontal li:hover ul li {
+	display: block;
+	font-weight: normal;
+	white-space: nowrap;
+}
+#menu li ul li {
+	margin-top: 3px;
+}
+#menu li ul li:first-child {
+	margin-top: -3px;
+}
+
+/* Menu vertical */
+#menu.vertical .ligne,
+#menu.vertical .deplie,
+#menu.vertical .colonne {
+	clear: both;
+	display: block;
+	float: none;
+	text-align: left;
+	border-top: 1px solid grey;
+}
+#menu.horizontal li.ligne span {
+	cursor: default;
+}
+#menu.vertical li.ligne span,
+#menu.vertical li.colonne span {
+	cursor: ns-resize;
+}
+#menu.vertical li.deplie span {
+	cursor: default;
+}

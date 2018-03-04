@@ -1,0 +1,40 @@
+<!-- Move posts -->
+<!-- IF SCRIPT_NAME == 'viewtopic' and S_NUM_POSTS > 1 -->
+	<style>
+		/* TODO DCMM Mettre dans un .CSS */
+		.pagination,
+		.display-options {
+			display: none;
+		}
+	</style>
+	<script type="text/javascript" src="assets/GeoBB/jquery-ui/jquery-ui.min.js"></script>
+	<script>
+		var post_ids_before = [];
+		<!-- BEGIN postrow -->
+			post_ids_before.push('#p{postrow.POST_ID}'); // Tableau des ids des posts avant
+		<!-- END postrow -->
+
+		$('#page-body').sortable({
+			items: post_ids_before.join(','),
+			cursor: 'ns-resize',
+			opacity: 0.7,
+			revert : true,
+			activate: function(e,ui) {
+				// Redimensionne les espaces vides à la hauteur du pavé à placer
+				$('.ui-sortable-placeholder').css('height:'+ui.item.context.offsetHeight+'px');
+			},
+			update: function(e,ui) {
+				// On recharge la page avec la nouvelle liste des post_id
+				location.assign(
+					window.location.href.replace(/#.*$/, '') + // L'URL sans le "#signet" à la fin
+					'&' + $(this).sortable(
+						'serialize',
+						{expression: /(p)([0-9]+)/} // Retire le p devant l'ID du post
+					).replace (/p/g,'o') + // Le remplace par un 'o' (qui sera l'argument de l'URL de modification
+					'#'+ui.item.context.id // Se positionne sur le post modifié
+				);
+			}
+		});
+	</script>
+<!-- ENDIF -->
+<!-- End move posts -->

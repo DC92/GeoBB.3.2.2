@@ -1,0 +1,225 @@
+MIGRATION
+=========
+dézipper et uploader le nouveau phpbb
+supprimer ext/phpbb/wiglink & install
+dezipper et uploader https://github.com/Dominique92/GeoBB
+uploader config.php (version précédente)
+Transférér les images
+
+FAIT
+====
+realeases de phpBB, geoPHP, phpbb_collapsiblecategories_1.0.2, jquery-ui-1.12.1
+
+TODO
+====
+Remplacer leaflet par OL
+	Enlever toute référence à leaflet dans les sources
+Essayer 1.5 1.5 https://github.com/dynamicdriverepo/simplecontrolsgallery
+Voir release jquery 3.3.1 http://jquery.com/ (dans ext/Dominique92/Organiser/jquery-ui) ?????
+Voir si geoPHP toujours d'utilité
+
+dézipper et uploader https://www.phpbb.com/customise/db/extension/collapsible_forum_categories/
+	ext/Dominique92/...
+	style/chemineur/...
+	favicon.ico
+run SITE/install -> Update manuel -> Database only
+Supprimer install
+
+BUGS
+====
+Pb avec la permutation des posts : ne permet pas ge glisser sur mobile !
+Voir liste des topics de chem3/Fonctionnalités et bugs
+Import WRIC : bbcode ne marche pas, en particulier les liens ce qui est génant.
+Plus de delete segment de ligne
+Pas de scroll avec doigt (mobile) sur page avec deplacement de post
+Suppression fichier attach ne supprime pas l'attachment.
+Diapo : ne s'arrête pas sur touche escape
+WRI : Le numéro de point demandé "5156" est introuvable dans notre base (chalet des ministres)
+Input fichier GPX sur ligne train ?
+Pas de choix de forum sur rando pedestre
+Posting ligne: pour édit : mettre marqueurs lignes au dessus des icones
+Clear Ajax carte quand ajoute/supprime un lien (les 2 icones restent sur la carte)
+Supression de fiche => viewforum.php?f=0 => Le forum que vous avez tenté d’atteindre n’existe pas.
+Pourquoi ne retourne t'il pas un mail de création d'user à l'admin ?
+Pourquoi post_attachment = 0 si on a une image ?
+Click sur une icone chem2 plante
+Image interdite dans texte
+	http://chemineur.fr/viewtopic.php?t=10411#p29247
+
+TODO
+====
+Mettre un gros cache sur leaflet.js...
+Joindre et compresser les js & css
+Changer la phrase de connexion
+Ajouter un lien "mot de passe" et "contact"
+Interface VTTRACK
+	Icônes KO
+	Priorité pas aux orris !!
+	Reprendre interface sur chem3
+
+BEST TODO
+=========
+Utilité de basepars.php ?
+Ajouter les liens en "voir sur le site" dans l'étiquette
+Le sélecteur de couche chem/wri/c2C/... pourrait ne pas sélectionner les sites externes par défaut.
+Mettre ?date dans les liens des libs LL.
+IGN test.chemineur.fr 1nxqfnrnhph73nqh80izju6j
+En cas de chargement de trace GPS, colorier de façon différente des traces de la carte.
+OS.GB key for test.chemineur.fr
+Pouvoir trier les posts WRIC
+Bug à l'upgrade de version avec /config.php : '{$cles_ign[$_SERVER['HTTP_HOST']]}', : Illegal use of $_SERVER
+Meteo sur chem
+Initialiser avec carte IGN (puisque init = sur la France)
+GPX : Nommage des tracks / du fichier.
+BUG: function gis_after($vars) : pb de ob_flush sur 1&1
+Mettre les media print dans print.css
+CSS bug chem cadre liens sur largeur fenêtre petite
+Erradiquer geoPHP ? si SQL >= version 5.7 (inclue JSON) -> Phpbb 3.2
+Choix type trace GPS
+Editeur Optim geom dès le chargement
+Appli méteo suisse
+Créer les massifs manquants sur WRI
+Import WRI: importer texte fiche ?
+Post d'accueil chemineur
+Ajouter l'origine des pages importées chemineur
+Ajouter des données fiches à volonté (serialized)
+GIS.PHP faire du BBOX une diagonale pour Intersects
+Barmenu: Enveloppe message trop basse dans Chrome
+Mauvaise largeur de carte quand le style est prosilver
+Attendre que le fichier soit chargé avant de valider le post : à sécuriser !
+Diaporama pleine page ? En particulier sur mobile
+	Echap par une touche sur mobile pas pratique
+Pouvoir inclure : Les caractères ( ) sont interdits dans les URLs, il faut les remplacer respectivement par %28 et %29
+Erreur type de caractères randos Lozerre
+Récup trace diaporamas + chemins chem2
+Récup auteur photo // GEO-TODO DCMM Retrouver le nom du "poster_id" : $vars['attachment']['poster_id']
+Date des clichés < 1970 ??? (pas d'UNIX time) => Utiliser la date EXIF (éditée) pour les clichés ???
+EDIT.log => Trace supprimer le sujet
+	EDIT.log => Segmenter par jour
+Eviter d'afficher les jpg non autorisés insérés dans le texte.
+	Rechercher les liens vers une image dans le texte (Google image)
+Import complet points WRI
+	Rechercher dans les points externes / dedoublons autres sites
+	Interface WRI V2->V3 	http://v2.chemineur.fr/prod/chem/json.php?site=c2c&bbox=-6.921386718749999%2C38.75408327579141%2C20.32470703125%2C51.69979984974196Doublons ou icones fantômes
+Améliorer référencement (-> Prat communal !)
+Pouvoir citer un WRIC
+	Tri des WRIC (actuellement en bas de page) => date par défaut + déplaçable
+ext/GeoBB : ajouter les coordonnées au template print
+Posting: Purger les points des [*=ligne] à la saisie (include fichier dans leaflet) ?
+Import references: osm overpass, LDP
+	Import LDP: view-source:http://www.lacsdespyrenees.com/kml-Bielsa.kml
+Récupérer les smileys tout ronds de WRI
+Revenir à la page où on était quand on se connecte
+	Login redirection () GeoBB316
+		//GEO login		trigger_error('INSECURE_REDIRECT', E_USER_ERROR);
+				$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login&amp;redirect='.$request->server('REQUEST_URI', '')); //GEO Redirige sur la page initiale apres le login
+		//GEO login		$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login');
+		+++ logout
+Aspect bouton créer un point dans viewforums
+Ajouter bouton permutation sur page point chem
+	View film + permutation
+
+AIDE
+====
+Fonction glisser les commentaires
+L'affichage des traces peut être désactivé dans le sélecteur de gauche de la carte (décocher randonnées)
+Un sujet est actif quand il y a eu des contributions récentes.
+Création / Edition de traces
+Ici, la COPPA est la "Children's Online Privacy Protection Act", une loi américaine pour protéger la vie privée des mineurs de moins de 13 ans. J'essayerai d'enlever les mentions dans les formulaires.
+Consulter l'historique des éditions
+
+MISE EN FORME / INSTALL / DEMOS
+===============================
+Dépendance des plugins:
+	<!-- INCLUDE reference.html --> => Devrait être un extract
+Compléter un GITHUB READ.ME
+DCMM -> TBD
+Stockage images sur plus d'1 répertoire => ? plugin ?
+Faire executer l'import par le cron
+Intégrer dans les patchs ??? Attendre !
+	RewriteCond %{REQUEST_SCHEME} ^http$ [NC]
+	RewriteCond %{HTTP_HOST} ^chemineur.fr$ [NC]
+	RewriteRule ^.*$ https://%{SERVER_NAME}/%1 [L]
+Centraliser patchs
+	Passage en https: htaccess / route
+Mettre tous les responsive dans responsive.css
+Voir nom en français des variables spécifiques ?
+Convergence noms: reference / lien / import / ...
+Demo GeoBB : création 1 point + 1 ligne + 1 surface et forums associés
+Lang sur tous les *.php : faire le tri ! + incorporer tous les textes + traduire en anglais ??
+
+TODO TORTILLARDS - LIGNES
+=========================
+Icône modifier fiche ligne / supprimer
+Ligne n'affiche pas la carte si pas de geom dans le premier post
+Distances points caractéristiques sur la ligne
+Tortillards : Fatal error: Uncaught exception 'Twig_Error_Loader' with message 'Unable to find template "viewtopic_ligne.html" (looked into: ././ext/Dominique92/BarMenu/styles/all/template, 
+Filtrage des forums & catégories suivant le style: -style <==== TBD
+Titre page dépendant du style => Le faire varier pour tortillards => Config ?
+Styles => 1.234em (pas de PX)
+Reprendre tortillards viewtopic_ligne.* suivant nouveaux templates ext/GeoBB
+20160129.gpx : Fatal error:
+	Uncaught exception 'Exception' with message 'Cannot construct a LineString with a single point' in /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/geometry/LineString.class.php:18 Stack trace: #0 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/adapters/GeoJSON.class.php(71): LineString->__construct(Array) #1 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/adapters/GeoJSON.class.php(93): GeoJSON->arrayToLineString(Array) #2 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/adapters/GeoJSON.class.php(54): GeoJSON->arrayToMultiLineString(Array) #3 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/adapters/GeoJSON.class.php(44): GeoJSON->objToGeom(Object(stdClass)) #4 [internal function]: GeoJSON->read('{"type":"MultiL...') #5 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/geoPHP.inc(78): call_user_func_array(Array, Array) #6 /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB in /homepages/33/d187913083/htdocs/chem3/ext/Dominique92/GeoBB/geoPHP/lib/geometry/LineString.class.php on line 18
+	Leaflet
+		Purge des points identiques sur un segment
+		Ne pas exporter une ligne ne contenant qu'un point
+
+EXTENSIONS (Ajouter dans les read.me)
+==========
+https://www.phpbb.com/customise/db/extension/upload/
+https://www.phpbb.com/customise/db/extension/auto_database_backup_2/
+https://www.phpbb.com/customise/db/extension/collapsible_forum_categories/
+https://www.phpbb.com/customise/db/extension/recent_topics_2/
+GeoBB
+	- Objets géographiques : DONE
+	- Autres champs liés à un topic / à un post: Sélectionnés par les champs SQL et ext/STYLE/tpl/topic_VIEW.html & .js : DONE
+	- Détermination automatique de massif / altitude : DONE
+	- Permet la saisie d'un POST avec un texte vide : DONE
+StylesViews
+	- Force le style en fonction du domaine : DONE
+	- Force la view en fonction du descripteur de forum: *view : DONE
+	- Filtrage des forums & catégories suivant le style: -style <==== TBD
+BarMenu
+	- Menu mode ligne avec expansion : DONE
+	- liste des types à créer (différentes vues / forum) : DONE
+		NON ?? https://www.phpbb.com/customise/db/extension/breadcrumb_menu/
+		NON ?? https://www.phpbb.com/customise/db/extension/post_new_topic/
+ResizeImg
+	- Photos de taille variable : DONE
+	- Import d'images externes : DONE
+	- Champs EXIF : DONE
+Organiser
+	- Changement de forum par sélection dans posting. : DONE
+	- Réorganiser posts : DONE
+News
+	- News accueil : DONE
+	- Message de bienvenu aux non connectés : DONE
+- Spam: Filtrage suivant localisation IP <==== TBD
+A voir
+	?? https://www.phpbb.com/customise/db/extension/database_optimize_and_repair_tool/
+https://www.phpbb.com/customise/db/extension/shareon/
+https://www.phpbb.com/customise/db/extension/phpbb_3.1_stop_forum_spam/
+https://www.phpbb.com/customise/db/extension/seo_meta_description/
+	https://www.phpbb.com/customise/db/extension/seo_sitemap/
+?? https://www.phpbb.com/customise/db/extension/about_us/
+
+Styles
+======
+chemineur
+tortillards + dates 
+gpx-rando
+	+ stats sur trace
+wri + info cabane / type : TBD
+
+*******************************************************
+http://s201381593.onlinehome.fr/cron/task.php
+*******************************************************
+COPIE SITE
+==========
+Delete all SQL tables
+Import sauvegarde SQL complete
+UPDATE phpbb_config SET config_value = "test.chemineur.fr" WHERE config_name = "cookie_domain";
+UPDATE phpbb_config SET config_value = "phpbb3_71gbo" WHERE config_name = "cookie_name";
+UPDATE phpbb_config SET config_value = "test.chemineur.fr" WHERE config_name = "server_name";
+*******************************************************
+

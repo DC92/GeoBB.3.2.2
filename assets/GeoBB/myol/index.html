@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>My Openlayers</title>
+
+	<!-- Openlayers -->
+	<link  href="../ol-dist/ol.css" type="text/css" rel="stylesheet">
+	<!--script src="http://openlayers.org/en/latest/build/ol-debug.js"></script-->
+	<script src="../ol-dist/ol-debug.js"></script>
+
+	<!-- Recherche par nom -->
+	<link href="../ol-geocoder/ol-geocoder.css" type="text/css" rel="stylesheet">
+	<script src="../ol-geocoder/ol-geocoder.js"></script>
+
+	<!-- Proj4 -->
+	<script src="../proj4js/proj4.js"></script>
+
+	<!-- Dominique -->
+	<script src="myol.js"></script>
+	<link href="myol.css" rel="stylesheet">
+</head>
+<body>
+	<!--input id="range" type="range" min="0" max="100" value="50" oninput="layerSelection()" /-->
+
+	<div id="map" class="map"></div>
+	<div id="lonlat"></div>
+	<div id="edit-lonlat"></div>
+	<!--select multiple="multiple" class="layerselect" id="layer-select" style="overflow-y:hidden" onchange="layerSelection()"></select-->
+	<div>Ctrl+click:couches multiples</div>
+	<textarea id="geojson" rows="25" cols="80">
+		{
+			"type": "FeatureCollection",
+			"features": [{
+				"type": "Feature",
+				"geometry": {"type":"MultiLineString","coordinates":[[[-4.35022,47.78254],[-4.3667,47.78992],[-4.32825,47.86368],[-4.47656,47.9778],[-4.72375,48.06965],[-4.31177,48.12101],[-4.26782,48.18332],[-4.56445,48.20163],[-4.63586,48.29308],[-4.23486,48.33326],[-4.49304,48.38436],[-4.86383,48.3111],[-4.84186,48.59164],[-4.46008,48.63546],[-4.00964,48.71164],[-3.76245,48.70439],[-3.57019,48.67901],[-3.58118,48.83834],[-3.14172,48.86364],[-2.6803,48.5228],[-2.79565,47.57172],[-3.13623,47.58284],[-3.66357,47.78992],[-4.14697,47.76408],[-4.35022,47.78254]]]}
+			}]
+		}
+	</textarea>
+
+	<!-- A la fin pour utiliser les éléments déclarés -->
+	<script src="index.js"></script>
+  </body>
+</html>

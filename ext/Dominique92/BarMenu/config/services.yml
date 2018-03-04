@@ -1,0 +1,10 @@
+services:
+    Dominique92.BarMenu.listener:
+        class: Dominique92\BarMenu\event\listener
+        arguments:
+            - @dbal.conn
+            - @template
+            - @user
+            - @ext.manager
+        tags:
+            - { name: event.listener }
