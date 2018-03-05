@@ -1295,3 +1295,103 @@ function lineEditor(id, snaps) {
 
 	return layer;
 }
+
+//***************************************************************
+// Variables préinitialisées
+//***************************************************************
+var baseLayers = {
+	'OSM-FR': OSMlayer('//{a-c}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'),
+	'OSM': OSMlayer('//{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'),
+	'MRI': OSMlayer('//maps.refuges.info/hiking/{z}/{x}/{y}.png', '<a href="http://wiki.openstreetmap.org/wiki/Hiking/mri">MRI</a>'),
+	'Hike & Bike': OSMlayer('http://{a-c}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', '<a href="http://www.hikebikemap.org/">hikebikemap.org</a>'), // Not on https
+	'Autriche': kompassLayer('KOMPASS Touristik'),
+	'OSM-outdoors': thunderforestLayer('outdoors', key.thunderforest),
+	'OSM-cycle': thunderforestLayer('cycle', key.thunderforest),
+	'OSM-landscape': thunderforestLayer('landscape', key.thunderforest),
+	'OSM-transport': thunderforestLayer('transport', key.thunderforest),
+	'IGN': ignLayer(key.ign, 'GEOGRAPHICALGRIDSYSTEMS.MAPS'),
+	'IGN photos': ignLayer(key.ign, 'ORTHOIMAGERY.ORTHOPHOTOS'),
+	'IGN TOP 25': ignLayer(key.ign, 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.STANDARD'),
+	'IGN classique': ignLayer(key.ign, 'GEOGRAPHICALGRIDSYSTEMS.MAPS.SCAN-EXPRESS.CLASSIQUE'),
+	// NOT YET	ignLayer('IGN avalanches', key.ign,'GEOGRAPHICALGRIDSYSTEMS.SLOPES.MOUNTAIN'),
+	'Cadastre': ignLayer(key.ign, 'CADASTRALPARCELS.PARCELS', 'image/png'),
+	'Swiss': swissLayer('ch.swisstopo.pixelkarte-farbe'),
+	'Swiss photo': swissLayer('ch.swisstopo.swissimage'),
+	'Espagne': spainLayer('mapa-raster', 'MTN'),
+	'Espagne photo': spainLayer('pnoa-ma', 'OI.OrthoimageCoverage'),
+	'Italie': igmLayer(),
+	'Angleterre': osLayer(key.bing),
+	'Bing': bingLayer('Road', key.bing),
+	'Bing photo': bingLayer('Aerial', key.bing),
+	'Google road': googleLayer('m'),
+	'Google terrain': googleLayer('p'),
+	'Google photo': googleLayer('s'),
+	'Google hybrid': googleLayer('s,h'),
+	Stamen: stamenLayer('terrain'),
+	Watercolor: stamenLayer('watercolor'),
+	'Neutre': new ol.layer.Tile()
+};
+
+var overLayers = {
+	WRI: pointsWriLayer(),
+	Massifs: massifsWriLayer(),
+	Chemineur: geoJsonLayer({
+		url: 'http://chemineur.fr/ext/Dominique92/GeoBB/gis.php?site=this&poi=3,8,16,20,23,28,30,40,44,64,58,62',
+		properties: function(property) {
+			return {
+				styleImage: property.icone,
+				hoverText: property.nom,
+				clickUrl: property.url
+			}
+		}
+	}),
+	OverPass: overpassLayer({
+		// icon_name: '[overpass selection]'
+		ravitaillement: '["shop"~"supermarket|convenience"]',
+		bus: '["highway"="bus_stop"]',
+		parking: '["amenity"="parking"]["access"!="private"]',
+		camping: '["tourism"="camp_site"]',
+		'refuge-garde': '["tourism"="alpine_hut"]',
+		'cabane-non-gardee': '["building"="cabin"]',
+		abri: '["amenity"="shelter"]',
+		hotel: '["tourism"~"hotel|guest_house|chalet|hostel|apartment"]',
+	})
+}
+
+var controls = {
+	zoom: new ol.control.Zoom(),
+	attribution: new ol.control.Attribution({
+		collapsible: false // Attribution toujours ouverte
+	}),
+	//TBD BUG full screen limité en hauteur (chrome, mobile, ...)
+/*
+	fullScreen: new ol.control.FullScreen({
+		label: '\u21d4',
+		labelActive: '\u21ce',
+		tipLabel: 'Plein écran'
+	}),
+*/
+	scale: new ol.control.ScaleLine(),
+	position: new ol.control.MousePosition({
+		coordinateFormat: ol.coordinate.createStringXY(5),
+		projection: 'EPSG:4326',
+		className: 'ol-coordinate'
+	}),
+	permalink: permalink({
+		init: true,
+		invisible: false
+	}),
+	// https://github.com/jonataswalker/ol-geocoder
+	geocoder: new Geocoder('nominatim', {
+		provider: 'osm',
+		lang: 'FR',
+		placeholder: 'Recherche par nom' // Initialisation du champ de saisie
+	}),
+	gps: buttonGPS(),
+	print: controlButton('&equiv;', {
+		title: 'Imprimer la carte',
+		action: function() {
+			window.print();
+		}
+	})
+};

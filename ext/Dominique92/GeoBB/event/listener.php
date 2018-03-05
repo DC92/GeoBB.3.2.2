@@ -119,7 +119,7 @@ class listener implements EventSubscriberInterface
 				) &&
 				@$row['geomwkt']
 			) {
-				include_once('assets/GeoBB/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
+				include_once('assets/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
 				$g = \geoPHP::load($row['geomwkt'],'wkt');
 				$row['geomjson'] = $g->out('json');
 				$this->get_bounds($g);
@@ -284,7 +284,7 @@ class listener implements EventSubscriberInterface
 			$this->db->sql_freeresult($result);
 
 			// Traduction en geoJson
-			include_once('assets/GeoBB/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
+			include_once('assets/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
 			$g = \geoPHP::load($post_data['geomwkt'],'wkt');
 			$this->get_bounds($g);
 			$gp = json_decode ($g->out('json')); // On transforme le GeoJson en objet PHP
@@ -345,7 +345,7 @@ class listener implements EventSubscriberInterface
 			// Donnée spaciale
 			$json = request_var ($col_name.'json', ''); // Look in $_POSTS[*json]
 			if ($json) {
-				include_once('assets/GeoBB/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
+				include_once('assets/geoPHP/geoPHP.inc'); // Librairie de conversion WKT <-> geoJson (needed before MySQL 5.7)
 				$g = \geoPHP::load (html_entity_decode($json), 'json');
 				if ($g) // Pas de geom
 					$sql_data[POSTS_TABLE]['sql'][$col_name] = 'GeomFromText("'.$g->out('wkt').'")';

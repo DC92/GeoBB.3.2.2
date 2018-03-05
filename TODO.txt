@@ -12,6 +12,9 @@ realeases de phpBB, geoPHP, phpbb_collapsiblecategories_1.0.2, jquery-ui-1.12.1
 
 TODO
 ====
+Voir pb déclaration clés aprés l'appel MyOl
+Remettre full screen dans MyOl
+	Bug CSS fullscreen
 Remplacer leaflet par OL
 	Enlever toute référence à leaflet dans les sources
 Essayer 1.5 1.5 https://github.com/dynamicdriverepo/simplecontrolsgallery
