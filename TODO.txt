@@ -12,6 +12,7 @@ realeases de phpBB, geoPHP, phpbb_collapsiblecategories_1.0.2, jquery-ui-1.12.1
 
 TODO
 ====
+scrollIntoView  => document.getElementById("containingDiv").scrollTop += 10;
 Voir pb déclaration clés aprés l'appel MyOl
 Remettre full screen dans MyOl
 	Bug CSS fullscreen
